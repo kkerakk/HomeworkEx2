@@ -61,6 +61,26 @@ namespace Garage
             takenSlot++;
             Utilities.WriteLineColorText("Poprawnie dodano samochód.");
         }
+        public void RemoveCarFromGarage()
+        {
+            Console.Clear();
+            PrintAllCars();
+            if (Utilities.isGarageCreated == false)
+            {
+                Utilities.WriteLineColorText("Brak garażu, proszę najpierw utworzyć garaż.", ccRed, true);
+                return;
+            }
+            if (takenSlot == 0)
+            {
+                Utilities.WriteLineColorText("W garażu nie ma żadnych pojazdów.", ccRed, true);
+                return;
+            }
+            Utilities.WriteLineColorText("Podaj ID auta które chcesz usunąć", ccRed);
+            int id = Utilities.InputDataAsInt(1, cars.Count(), 1);
+            cars.RemoveAt(id-1);
+            Utilities.WriteLineColorText($"Samochód o nr: {id} został usunięty z garażu", isConsoleCleared: true);
+            takenSlot--;
+        }
         public void PrintAllCars()
         {
             Console.Clear();
@@ -80,13 +100,9 @@ namespace Garage
                 {
                     i++;
                     Utilities.WriteLineColorText($"{i}. Marka: ", $"{car.Brand}", multiplierTab: 2);
-<<<<<<< HEAD
                     Utilities.WriteLineColorText($"{i}. Model: ", $"{car.Model}", multiplierTab: 2);
                     Utilities.WriteLineColorText($"{i}. Rok produkcji: ", $"{car.Dom}", multiplierTab: 1);
-=======
-                    Utilities.WriteLineColorText($"{i}. Model: ", $"{car.Model}", multiplierTab:2);
-                    Utilities.WriteLineColorText($"{i}. Rok produkcji: ", $"{car.Dom}", multiplierTab:1);
->>>>>>> 20f334a7fafdaa448af35789ab2bcce8b41a577b
+
                     Utilities.Underline('=', 50);
                 }
             }

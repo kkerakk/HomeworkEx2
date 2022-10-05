@@ -1,7 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System;
 
-//Regex rgxAZ09 = new Regex("[^a-zA-Z0-9]");
 namespace Garage
 {
     static class Program
@@ -16,7 +15,7 @@ namespace Garage
                 while (true)
                 {
                     Console.WriteLine("Wcisnij odpowiedni przycisk, żeby przejść dalej:");
-                    Console.WriteLine("1. Utwórz nowy garaż\n2. Utwórz nowe auto\n3. Przejrzyj auta w garażu\n4. Wyświetl dane o garażu\n5. Wyjdź z programu");
+                    Console.WriteLine("1. Utwórz nowy garaż\n2. Utwórz nowe auto\n3. Usuń auto z garażu\n4. Przejrzyj auta w garażu\n5. Wyświetl dane o garażu\n6. Wyjdź z programu");
                     int.TryParse(Console.ReadLine(), out int input);
 
                     switch (input)
@@ -28,12 +27,15 @@ namespace Garage
                             garage.AddCarToGarage();
                             break;
                         case 3:
-                            garage.PrintAllCars();
+                            garage.RemoveCarFromGarage();
                             break;
                         case 4:
-                            garage.DisplayInfoAboutGarage();
+                            garage.PrintAllCars();
                             break;
                         case 5:
+                            garage.DisplayInfoAboutGarage();
+                            break;
+                        case 6:
                             Environment.Exit(0);
                             break;
                         default:
