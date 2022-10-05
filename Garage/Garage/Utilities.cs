@@ -5,18 +5,21 @@ namespace Garage
 {
     public static class Utilities
     {
+
+        public static Regex rgxAZ = new Regex("[^a-zA-Z]");
+        public static Regex rgxAZ09 = new Regex("[^a-zA-Z0-9]");
         public static bool isGarageCreated = false;
         public static string InputDataAsString()
         {
             string input = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(input) && input.Length >= 2 && input.Length <= 100)
+            if (!string.IsNullOrEmpty(input) && input.Length <= 100)
             {
                 return input;
             }
             else
             {
-                Console.WriteLine("Podano niepoprawną nazwę garażu. Proszę sprobować raz jeszcze");
+                Console.WriteLine("Podano niepoprawną wartość. Proszę sprobować raz jeszcze");
             }
             return input;
         }
@@ -24,7 +27,7 @@ namespace Garage
         { 
             string input = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(input) && input.Length >= 2 && input.Length <= 100)
+            if (!string.IsNullOrEmpty(input) && input.Length <= 100)
             {
                 return input;
             }
@@ -33,7 +36,7 @@ namespace Garage
                 switch (valueSwitch)
                 {
                     case 1:
-                        Console.WriteLine("Podano niepoprawną nazwę garażu. Proszę sprobować raz jeszcze");
+                        Console.WriteLine("Podano niepoprawną wartość. Proszę sprobować raz jeszcze");
                         break;
                     default:
                         Console.WriteLine("Podano niepoprawną wartość. Proszę sprobować raz jeszcze");
@@ -46,7 +49,7 @@ namespace Garage
         {
             string input = Console.ReadLine();
             bool isString = rgx.IsMatch(input);
-            if (!isString && !string.IsNullOrEmpty(input) && input.Length >= 2)
+            if (!isString && !string.IsNullOrEmpty(input))
             {
                 return input;
             }
@@ -55,7 +58,7 @@ namespace Garage
                 switch (valueSwitch)
                 {
                     case 1:
-                        Console.WriteLine("Podano niepoprawną nazwę garażu. Proszę sprobować raz jeszcze");
+                        Console.WriteLine("Podano niepoprawną wartość. Proszę sprobować raz jeszcze");
                         break;
                     default:
                         Console.WriteLine("Podano niepoprawną wartość. Proszę sprobować raz jeszcze");
@@ -80,7 +83,7 @@ namespace Garage
                 switch (valueSwitch)
                 {
                     case 1:
-                        Console.WriteLine($"Podano niepoprawną ilość miejsc w garażu, proszę spróbować raz jeszcze. Prawidłowy przedział jest od {minValue} do {maxValue}");
+                        Console.WriteLine($"Podano niepoprawną wartość, proszę spróbować raz jeszcze. Prawidłowy przedział jest od {minValue} do {maxValue}");
                         break;
                     default:
                         Console.WriteLine("Podano niepoprawną wartość");
@@ -93,7 +96,7 @@ namespace Garage
                 return number;
             }
         }
-        public static void WriteColorText(string textColored, ConsoleColor firstColor = ConsoleColor.Red, bool isConsoleCleared = false)
+        public static void WriteColorText(string textColored, ConsoleColor firstColor = ConsoleColor.DarkGreen, bool isConsoleCleared = false)
         {
             if (isConsoleCleared)
             {
@@ -103,19 +106,21 @@ namespace Garage
             Console.Write(textColored);
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public static void WriteColorText(string text,string textColored,ConsoleColor firstColor = ConsoleColor.White,ConsoleColor secondColor = ConsoleColor.Red, bool isConsoleCleared = false)
+        public static void WriteColorText(string text,string textColored,ConsoleColor firstColor = ConsoleColor.White,ConsoleColor secondColor = ConsoleColor.DarkGreen, bool isConsoleCleared = false, int multiplierTab = 0)
         {
+            string tabs = new string('\t', multiplierTab);
             if (isConsoleCleared)
             {
                 Console.Clear();
             }
             Console.ForegroundColor = firstColor;
             Console.Write(text);
+            Console.Write(tabs);
             Console.ForegroundColor = secondColor;
             Console.Write(textColored);
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public static void WriteLineColorText(string textColored, ConsoleColor firstColor = ConsoleColor.Red, bool isConsoleCleared = false)
+        public static void WriteLineColorText(string textColored, ConsoleColor firstColor = ConsoleColor.DarkGreen, bool isConsoleCleared = false)
         {
             if (isConsoleCleared)
             {
@@ -124,6 +129,27 @@ namespace Garage
             Console.ForegroundColor = firstColor;
             Console.WriteLine(textColored);
             Console.ForegroundColor = ConsoleColor.White;
+        }
+        public static void WriteLineColorText(string text, string textColored, ConsoleColor firstColor = ConsoleColor.White, ConsoleColor secondColor = ConsoleColor.DarkGreen, bool isConsoleCleared = false, int multiplierTab = 0)
+        {
+            string tabs = new string('\t', multiplierTab);
+            if (isConsoleCleared)
+            {
+                Console.Clear();
+            }
+            Console.ForegroundColor = firstColor;
+            Console.Write(text);
+            Console.Write(tabs);
+            Console.ForegroundColor = secondColor;
+            Console.WriteLine(textColored);
+            Console.ForegroundColor = ConsoleColor.White;
+
+            
+        }
+        public static void Underline(char symbol = '=', int value = 10)
+        {
+            string underline = new string (symbol, value);
+            Console.WriteLine(underline);
         }
     }
 }

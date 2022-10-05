@@ -9,10 +9,7 @@ namespace Garage
         static void Main(string[] args)
         {
             Garage garage = new Garage();
-            int dom = 2022;
             DisplayMenu();
-            //Utilities.WriteColorText("model: ", "Nissan",ConsoleColor.White,ConsoleColor.Yellow);
-            //Utilities.WriteColorText("rok produkcji: ", $"{dom}");
 
             void DisplayMenu()
             {
