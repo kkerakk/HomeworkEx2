@@ -8,7 +8,7 @@ namespace Garage
 {
     public class Garage
     {
-        #region Properties
+        #region Properties, Fields
         public string GarageName { get; set; }
         public int GarageTotalSpace { get; set; }
         public int GarageAvailableSpace { get; set; }
@@ -80,8 +80,13 @@ namespace Garage
                 {
                     i++;
                     Utilities.WriteLineColorText($"{i}. Marka: ", $"{car.Brand}", multiplierTab: 2);
+<<<<<<< HEAD
                     Utilities.WriteLineColorText($"{i}. Model: ", $"{car.Model}", multiplierTab: 2);
                     Utilities.WriteLineColorText($"{i}. Rok produkcji: ", $"{car.Dom}", multiplierTab: 1);
+=======
+                    Utilities.WriteLineColorText($"{i}. Model: ", $"{car.Model}", multiplierTab:2);
+                    Utilities.WriteLineColorText($"{i}. Rok produkcji: ", $"{car.Dom}", multiplierTab:1);
+>>>>>>> 20f334a7fafdaa448af35789ab2bcce8b41a577b
                     Utilities.Underline('=', 50);
                 }
             }
